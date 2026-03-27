@@ -1,0 +1,26 @@
+{
+  "description": "Blueprint SDLC audit enforcement and auto-update",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/audit-wrapper.sh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/auto-update.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
